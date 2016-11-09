@@ -1,2 +1,2 @@
-# customer-support
-Misc files and docs for customer support
+# Customer Support
+Misc files and docs for customer support.
