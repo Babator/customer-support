@@ -19,7 +19,11 @@
 
 		Babator.telemetry.on('request', function (_, data) {
 			if (data.inRead) {
-				FOL_GTM_PushEvent("Video", " inreadplay ", "babator");
+				if (data.isAutoPlay) {
+					FOL_GTM_PushEvent("Video", " inreadautoplay", "babator");
+				} else {
+					FOL_GTM_PushEvent("Video", " inreadplay ", "babator");
+				}
 			}
 		});
 	});
