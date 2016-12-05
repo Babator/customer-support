@@ -13,8 +13,10 @@
 	onBabatorReady(function () {
 		Babator.telemetry.on('start', function (_, data) {
 			if (data.inRead) {
-				FOL_GTM_PushEvent("Video", " play ", "babator");	
+				FOL_GTM_PushEvent("Video", " play ", "babator");
 			}
+
+			FOL_GTM_PushEvent('Video', 'sniperplay', 'play_sniper_cx_' + data.videoNumber);
 		});
 
 		Babator.telemetry.on('request', function (_, data) {
@@ -25,6 +27,9 @@
 					FOL_GTM_PushEvent("Video", " inreadplay ", "babator");
 				}
 			}
+
+			var playerType = data.playerType === 'flowplayerflash' ? 'Flash' : 'HTML5';
+			TFT.Ext.FOL.video.track('PlayButton', false, playerType, data.videoId);
 		});
 	});
 })();
