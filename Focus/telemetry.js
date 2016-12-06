@@ -16,7 +16,9 @@
 				FOL_GTM_PushEvent("Video", " play ", "babator");
 			}
 
-			FOL_GTM_PushEvent('Video', 'sniperplay', 'play_sniper_cx_' + data.videoNumber);
+			if (data.byBabator) {
+				FOL_GTM_PushEvent('Video', 'sniperplay', 'play_sniper_cx_' + data.videoNumber);
+			}
 		});
 
 		Babator.telemetry.on('request', function (_, data) {
@@ -28,8 +30,10 @@
 				}
 			}
 
-			var playerType = data.playerType === 'flowplayerflash' ? 'Flash' : 'HTML5';
-			TFT.Ext.FOL.video.track('PlayButton', false, playerType, data.videoId);
+			// if (data.byBabator) {
+			// 	var playerType = data.playerType === 'flowplayerflash' ? 'Flash' : 'HTML5';
+			// 	TFT.Ext.FOL.video.track('PlayButton', false, playerType, data.videoId);
+			// }
 		});
 	});
 })();
