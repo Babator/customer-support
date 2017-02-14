@@ -25,15 +25,25 @@
 			if (data.inRead) {
 				if (data.isAutoPlay) {
 					FOL_GTM_PushEvent("Video", " inreadautoplay", "babator");
+
+					////////////////////////////////////////////////////////////////
+					ga(function () {
+						var bbtrTracker = ga.getByName('babator');
+						bbtrTracker.send("event", "Video", " inreadautoplay", "babator");
+					});
+					////////////////////////////////////////////////////////////////
+					
 				} else {
 					FOL_GTM_PushEvent("Video", " inreadplay ", "babator");
+					
+					////////////////////////////////////////////////////////////////
+					ga(function () {
+						var bbtrTracker = ga.getByName('babator');
+						bbtrTracker.send("event", "Video", " inreadplay ", "babator");
+					});
+					////////////////////////////////////////////////////////////////
 				}
 			}
-
-			// if (data.byBabator) {
-			// 	var playerType = data.playerType === 'flowplayerflash' ? 'Flash' : 'HTML5';
-			// 	TFT.Ext.FOL.video.track('PlayButton', false, playerType, data.videoId);
-			// }
 		});
 	});
 })();
